@@ -1,0 +1,63 @@
+import random
+name = raw_input("Hello. This is our hangman game. What is your name? ")
+
+print "Hi, " + name + ".", "Time to play hangman!"
+
+def space_in_between():
+    print " "
+
+space_in_between()
+
+print "Start guessing..."
+
+word = ["hamburger", "hangman", "hello",] 
+
+guesses = ''
+
+turns = 10
+          
+word = random.choice(word)    
+    
+while turns > 0:         
+
+    failed = 0             
+
+    for char in word:      
+
+        if char in guesses:    
+    
+            print char,     
+        else:
+    
+            print "_",     
+       
+            failed += 1    
+
+
+    if failed == 0:
+        space_in_between()        
+        print "You won"  
+        print "You had", + turns, "more guesses"
+
+        break              
+
+    print
+
+    guess = raw_input("guess a character:") 
+    
+    while len(guess) > 1:
+        guess = raw_input("guess only one character:")
+            
+                    
+    guesses += guess                    
+
+    if guess not in word:  
+ 
+        turns -= 1        
+        print "wrong Wrong WRong WROng WRONg WRONG"    
+        print "But it's ok you have", + turns, 'more guesses' 
+ 
+        if turns == 0:           
+    
+            print "The word was " + word
+            print "Sorry :("
